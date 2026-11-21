@@ -77,7 +77,7 @@ def read_patch_labels(raw, scenes):
                 row = float(item["detect_scene_row"])
                 col = float(item["detect_scene_column"])
                 length = float(item["vessel_length_m"] or "nan")
-                side = (length if math.isfinite(length) and length > 0 else 20) / SIZE
+                side = (length / 10.0 if math.isfinite(length) and length > 0 else 20.0) / SIZE
                 for top in window_starts(row, scene.height):
                     for left in window_starts(col, scene.width):
                         x, y = (col - left) / SIZE, (row - top) / SIZE
